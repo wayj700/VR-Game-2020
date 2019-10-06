@@ -6,7 +6,6 @@ using Valve.VR.InteractionSystem;
 
 public class RigidbodyVRController : MonoBehaviour
 {
-
     private float maxSpeed;
     public float lerpSpeed = 1.5f;
     public float walkMaxSpeed = 10.0f;
@@ -14,9 +13,13 @@ public class RigidbodyVRController : MonoBehaviour
     public float Sensitivity = 1.0f;
     public float walkSpeed = 0.6f;
     public float runSpeed = 1.0f;
+    public float jumpForce = 5.0f;
+
+    private bool isGrounded = true;
 
     public SteamVR_Action_Boolean MoveClick = null;
     public SteamVR_Action_Vector2 MoveStick = null;
+    public SteamVR_Action_Boolean JumpClick = null;
 
     public Transform head;
 
@@ -33,22 +36,17 @@ public class RigidbodyVRController : MonoBehaviour
     void Update()
     {
         HandleHeight();
-        CalculateMovement();
     }
 
     void FixedUpdate()
     {
-        if (CharacterRigidbody.velocity.magnitude > maxSpeed)
-        {
-            //CharacterRigidbody.velocity = Vector3.Lerp(CharacterRigidbody.velocity, CharacterRigidbody.velocity.normalized * maxSpeed, lerpSpeed);
-            CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * maxSpeed;
-        }
+        CalculateMovement();
     }
 
     private void HandleHeight()
     {
         float headHeight = Mathf.Clamp(head.localPosition.y, 1, 2);
-        PlayerCollider.height = head.position.y;
+        PlayerCollider.height = head.position.y - transform.position.y;
 
         Vector3 newCenter = Vector3.zero;
         newCenter.y = PlayerCollider.height / 2;
@@ -68,6 +66,13 @@ public class RigidbodyVRController : MonoBehaviour
         Vector3 movement = Vector3.zero;
         Vector3 newMove = Vector3.zero;
 
+        //Set max speed of charcter
+        if (CharacterRigidbody.velocity.magnitude > maxSpeed && isGrounded)
+        {
+            //CharacterRigidbody.velocity = Vector3.Lerp(CharacterRigidbody.velocity, CharacterRigidbody.velocity.normalized * maxSpeed, lerpSpeed);
+            CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * maxSpeed;
+        }
+
         // If button pressed, run
         if (MoveClick.state)
         {
@@ -80,7 +85,8 @@ public class RigidbodyVRController : MonoBehaviour
             maxSpeed = walkMaxSpeed;
         }
 
-        if (MoveStick.axis.y != 0)
+        //Calculates movement based on joystick axis and orientation of head
+        if (MoveStick.axis.y != 0 && isGrounded)
         {
             newMove = orientation * (new Vector3(MoveStick.axis.x * Sensitivity, 0, MoveStick.axis.y * Sensitivity));
         }
@@ -89,7 +95,48 @@ public class RigidbodyVRController : MonoBehaviour
             newMove = Vector3.zero;
         }
 
+        //On button press, character jumps
+        if (JumpClick.state && isGrounded)
+        {
+            newMove += new Vector3(0, jumpForce, 0);
+            Debug.Log("Jumped");
+        }
+
+        //Apply
         CharacterRigidbody.AddForce(newMove);
-        Debug.Log("Player is moving Movement: " + movement + " newMove: " + newMove + " orientation" + orientation);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        //CheckIfGrounded();
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void CheckIfGrounded()
+    {
+        RaycastHit[] hits;
+
+        //Raycast 1 down to check for collider
+        Vector3 positionToCheck = new Vector3(head.position.x, 0 , head.position.z);
+        hits = Physics.RaycastAll(positionToCheck, new Vector3(0, -0.1f, 0), 0.1f);
+        Debug.DrawRay(positionToCheck, new Vector3(0, -0.1f, 0), Color.red);
+
+
+        //If collider hit, we are grounded
+        if (hits.Length > 0)
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }
