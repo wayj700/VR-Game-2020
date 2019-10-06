@@ -3837,10 +3837,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c12bf7cd1730d4b99e1c0c215a8551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
+  lerpSpeed: 1.5
+  walkMaxSpeed: 1.25
+  runMaxSpeed: 2.25
   Sensitivity: 10
-  walkSpeed: 7
-  runSpeed: 12
+  walkSpeed: 12
+  runSpeed: 16
   MoveClick:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0

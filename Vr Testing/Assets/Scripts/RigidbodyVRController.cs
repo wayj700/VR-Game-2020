@@ -7,7 +7,10 @@ using Valve.VR.InteractionSystem;
 public class RigidbodyVRController : MonoBehaviour
 {
 
-    public float maxSpeed = 1.0f;
+    private float maxSpeed;
+    public float lerpSpeed = 1.5f;
+    public float walkMaxSpeed = 10.0f;
+    public float runMaxSpeed = 5.0f;
     public float Sensitivity = 1.0f;
     public float walkSpeed = 0.6f;
     public float runSpeed = 1.0f;
@@ -26,17 +29,20 @@ public class RigidbodyVRController : MonoBehaviour
         PlayerCollider = GetComponent<CapsuleCollider>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         HandleHeight();
         CalculateMovement();
+    }
+
+    void FixedUpdate()
+    {
+        if (CharacterRigidbody.velocity.magnitude > maxSpeed)
+        {
+            //CharacterRigidbody.velocity = Vector3.Lerp(CharacterRigidbody.velocity, CharacterRigidbody.velocity.normalized * maxSpeed, lerpSpeed);
+            CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * maxSpeed;
+        }
     }
 
     private void HandleHeight()
@@ -66,25 +72,24 @@ public class RigidbodyVRController : MonoBehaviour
         if (MoveClick.state)
         {
             Sensitivity = runSpeed;
+            maxSpeed = runMaxSpeed;
         }
         else
         {
             Sensitivity = walkSpeed;
+            maxSpeed = walkMaxSpeed;
         }
 
         if (MoveStick.axis.y != 0)
         {
-            newMove = new Vector3(MoveStick.axis.x * Sensitivity, 0, MoveStick.axis.y * Sensitivity);
-            movement = orientation * (newMove * Sensitivity) * Time.deltaTime;
-            
-            //movement += orientation * (Sensitivity * Vector3.forward) * Time.deltaTime;
+            newMove = orientation * (new Vector3(MoveStick.axis.x * Sensitivity, 0, MoveStick.axis.y * Sensitivity));
         }
         else
         {
-            movement = Vector3.zero;
+            newMove = Vector3.zero;
         }
 
-        CharacterRigidbody.AddForce(orientation * newMove);
+        CharacterRigidbody.AddForce(newMove);
         Debug.Log("Player is moving Movement: " + movement + " newMove: " + newMove + " orientation" + orientation);
     }
 }
