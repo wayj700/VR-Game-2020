@@ -197,24 +197,6 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/pull"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/push"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
                      "output" : "/actions/default/in/grabgrip"
                   }
                },
@@ -260,25 +242,38 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/pull"
+                     "output" : "/actions/default/in/leftpull"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/x"
+               "path" : "/user/hand/left/input/x"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/push"
+                     "output" : "/actions/default/in/leftpush"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/y"
+               "path" : "/user/hand/left/input/y"
             },
             {
-               "inputs" : {},
-               "mode" : "none",
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/rightpull"
+                  }
+               },
+               "mode" : "button",
                "path" : "/user/hand/right/input/a"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/rightpush"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/b"
             }
          ]
       },

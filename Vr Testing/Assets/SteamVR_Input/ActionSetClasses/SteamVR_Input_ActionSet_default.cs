@@ -105,6 +105,38 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean LeftPush
+        {
+            get
+            {
+                return SteamVR_Actions.default_LeftPush;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean LeftPull
+        {
+            get
+            {
+                return SteamVR_Actions.default_LeftPull;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean RightPush
+        {
+            get
+            {
+                return SteamVR_Actions.default_RightPush;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean RightPull
+        {
+            get
+            {
+                return SteamVR_Actions.default_RightPull;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

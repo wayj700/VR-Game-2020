@@ -50,6 +50,22 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/LeftPush",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/LeftPull",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/RightPush",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/RightPull",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -86,7 +102,7 @@
   "action_sets": [
     {
       "name": "/actions/default",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/platformer",

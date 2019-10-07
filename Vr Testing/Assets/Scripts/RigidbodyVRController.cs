@@ -7,6 +7,7 @@ using Valve.VR.InteractionSystem;
 public class RigidbodyVRController : MonoBehaviour
 {
     private float maxSpeed;
+    private float currentMaxSpeed;
     public float lerpSpeed = 1.5f;
     public float walkMaxSpeed = 10.0f;
     public float runMaxSpeed = 5.0f;
@@ -67,10 +68,14 @@ public class RigidbodyVRController : MonoBehaviour
         Vector3 newMove = Vector3.zero;
 
         //Set max speed of charcter
-        if (CharacterRigidbody.velocity.magnitude > maxSpeed && isGrounded)
+        if (CharacterRigidbody.velocity.magnitude > currentMaxSpeed && isGrounded)
         {
-            //CharacterRigidbody.velocity = Vector3.Lerp(CharacterRigidbody.velocity, CharacterRigidbody.velocity.normalized * maxSpeed, lerpSpeed);
-            CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * maxSpeed;
+            currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, maxSpeed, lerpSpeed);
+            CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * currentMaxSpeed;
+        }
+        else
+        {
+            currentMaxSpeed = maxSpeed;
         }
 
         // If button pressed, run

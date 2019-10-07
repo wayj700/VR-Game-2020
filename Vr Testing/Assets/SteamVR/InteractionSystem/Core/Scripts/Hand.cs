@@ -1603,6 +1603,9 @@ namespace Valve.VR.InteractionSystem
             renderModelInstance.layer = gameObject.layer;
             renderModelInstance.tag = gameObject.tag;
             renderModelInstance.transform.parent = this.transform;
+
+            //Vector3 heading = Vector3.zero - renderModelInstance.transform.position;
+
             renderModelInstance.transform.localPosition = Vector3.zero;
             renderModelInstance.transform.localRotation = Quaternion.identity;
             renderModelInstance.transform.localScale = renderModelPrefab.transform.localScale;

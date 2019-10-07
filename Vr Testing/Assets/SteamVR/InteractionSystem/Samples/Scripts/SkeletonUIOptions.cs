@@ -8,29 +8,7 @@ namespace Valve.VR.InteractionSystem.Sample
 {
     public class SkeletonUIOptions : MonoBehaviour
     {
-        public bool HandWithControllers = false;
-        public bool ShowControllers = false;
 
-        private void Update()
-        {
-            if (ShowControllers == true)
-            {
-                ShowController();
-            }
-            else
-            {
-                HideController();
-            }
-
-            if (HandWithControllers == true)
-            {
-                AnimateHandWithController();
-            }
-            else
-            {
-                AnimateHandWithoutController();
-            }
-        }
         public void AnimateHandWithController()
         {
             for (int handIndex = 0; handIndex < Player.instance.hands.Length; handIndex++)
