@@ -114,7 +114,7 @@ public class RigidbodyVRController : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //CheckIfGrounded();
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag != "unwalkable")
         {
             isGrounded = true;
         }
@@ -139,9 +139,6 @@ public class RigidbodyVRController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
 }

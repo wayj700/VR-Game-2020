@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Ground
   - Interactible
+  - unwalkable
   layers:
   - Default
   - TransparentFX

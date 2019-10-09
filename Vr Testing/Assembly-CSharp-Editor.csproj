@@ -62,8 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NewtonVR\CollisionSoundFramework\Editor\NVRCollisionSoundControllerEditor.cs" />
-    <Compile Include="Assets\NewtonVR\Editor\NVRPlayerEditor.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\About\Editor\pg_AboutWindow.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Editor.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Editor\pg_GridRenderer.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ParameterWindow.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Preferences.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ToggleContent.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
@@ -75,6 +79,9 @@
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -90,6 +97,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

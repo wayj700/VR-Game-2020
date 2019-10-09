@@ -7,11 +7,11 @@ using Valve.VR.InteractionSystem;
 public class ForceGrab : MonoBehaviour
 {
     public GameObject oppositeHand;
-    public float sphereCastRadius = 1.0f;
-    public float maxDistance = 100.0f;
+    public float minDistance = 1.0f;
+    public float maxDistance = 25.0f;
     public float dragAmount = 20.0f;
     public float lerpSpeed = 0.5f;
-    public float ModSpeed = 3.5f;
+    public float ModSpeed = 0.1f;
 
     private float currentHoldDist;
     private Vector3 currentVelocity;
@@ -55,18 +55,18 @@ public class ForceGrab : MonoBehaviour
         }
         else if (isForceGrabbing && Grab.state)
         {
-            if (Push.state)
+            if (Push.state && currentHoldDist < maxDistance)
             {
                 currentHoldDist = currentHoldDist + ModSpeed;
             }
-            else if (Pull.state)
+            else if (Pull.state && currentHoldDist > minDistance)
             {
                 currentHoldDist = currentHoldDist - ModSpeed;
             }
 
             
             Vector3 heading = ForceRay.GetPoint(currentHoldDist) - grabbedObject.GetComponent<Rigidbody>().position;
-            float distance = Vector3.Distance(ForceRay.GetPoint(currentHoldDist), grabbedObject.GetComponent<Rigidbody>().position);
+            float distance = Vector3.Distance(ForceRay.GetPoint(Mathf.Clamp(currentHoldDist, minDistance, maxDistance)), grabbedObject.GetComponent<Rigidbody>().position);
             grabbedObject.GetComponent<Rigidbody>().AddForce(heading * (lerpSpeed * distance));
         }
         else if (isForceGrabbing && !Grab.state)
