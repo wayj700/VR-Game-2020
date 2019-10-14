@@ -22,6 +22,8 @@ public class RigidbodyVRController : MonoBehaviour
     public SteamVR_Action_Vector2 MoveStick = null;
     public SteamVR_Action_Boolean JumpClick = null;
 
+    public GameObject GroundCheck;
+
     public Transform head;
 
     private Rigidbody CharacterRigidbody;
@@ -41,6 +43,7 @@ public class RigidbodyVRController : MonoBehaviour
 
     void FixedUpdate()
     {
+        CheckIfGrounded();
         CalculateMovement();
     }
 
@@ -111,34 +114,21 @@ public class RigidbodyVRController : MonoBehaviour
         CharacterRigidbody.AddForce(newMove);
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        //CheckIfGrounded();
-        if (collision.gameObject.tag != "unwalkable")
-        {
-            isGrounded = true;
-        }
-    }
-
     private void CheckIfGrounded()
     {
-        RaycastHit[] hits;
-
-        //Raycast 1 down to check for collider
-        Vector3 positionToCheck = new Vector3(head.position.x, 0 , head.position.z);
-        hits = Physics.RaycastAll(positionToCheck, new Vector3(0, -0.1f, 0), 0.1f);
-        Debug.DrawRay(positionToCheck, new Vector3(0, -0.1f, 0), Color.red);
-
-
-        //If collider hit, we are grounded
-        if (hits.Length > 0)
+        Collider[] hitColliders = Physics.OverlapSphere(GroundCheck.transform.position, 0.1f);
+        int i = 0;
+        while (i < hitColliders.Length)
         {
-            isGrounded = true;
+            if (hitColliders[i].gameObject.tag != "unwalkable" && hitColliders[i].gameObject.tag != "Player")
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
+            i++;
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        isGrounded = false;
     }
 }

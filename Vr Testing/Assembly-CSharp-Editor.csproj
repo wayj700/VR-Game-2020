@@ -80,6 +80,12 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
