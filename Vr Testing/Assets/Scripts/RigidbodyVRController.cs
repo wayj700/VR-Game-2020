@@ -116,19 +116,20 @@ public class RigidbodyVRController : MonoBehaviour
 
     private void CheckIfGrounded()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(GroundCheck.transform.position, 0.1f);
-        int i = 0;
-        while (i < hitColliders.Length)
+        RaycastHit hit;
+        float distance = 1.01f;
+        Vector3 origin = new Vector3(head.position.x, 1 + transform.position.y, head.position.z);
+        Debug.DrawRay(origin, Vector3.down, Color.red, distance);
+        Debug.Log(Physics.Raycast(origin, Vector3.down, out hit, distance));
+        if (Physics.Raycast(origin, Vector3.down, out hit, distance))
         {
-            if (hitColliders[i].gameObject.tag != "unwalkable" && hitColliders[i].gameObject.tag != "Player")
-            {
-                isGrounded = true;
-            }
-            else
-            {
-                isGrounded = false;
-            }
-            i++;
+
+            isGrounded = true;
+
+        }
+        else
+        {
+            isGrounded = false;
         }
     }
 }
