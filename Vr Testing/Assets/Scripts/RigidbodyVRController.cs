@@ -11,12 +11,19 @@ public class RigidbodyVRController : MonoBehaviour
     public float lerpSpeed = 1.5f;
     public float walkMaxSpeed = 10.0f;
     public float runMaxSpeed = 5.0f;
+    public float wallSlideSpeed = 2.0f;
     public float Sensitivity = 1.0f;
     public float walkSpeed = 0.6f;
     public float runSpeed = 1.0f;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 400.0f;
+    public float doubleJumpForce = 300.0f;
+    public float waitTilDoubleJump = 0.75f;
+    public float wallJumpFowardVelocity = 200.0f;
+    public float wallJumpUpwardsVelocity = 100.0f;
 
-    private bool isGrounded = true;
+    [SerializeField] private bool isGrounded = true;
+    [SerializeField] private bool canDoubleJump = true;
+    [SerializeField] private bool touchingWall = false;
 
     public SteamVR_Action_Boolean MoveClick = null;
     public SteamVR_Action_Vector2 MoveStick = null;
@@ -44,6 +51,7 @@ public class RigidbodyVRController : MonoBehaviour
     void FixedUpdate()
     {
         CheckIfGrounded();
+        //CheckIfTouchingWall();
         CalculateMovement();
     }
 
@@ -76,6 +84,12 @@ public class RigidbodyVRController : MonoBehaviour
             currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, maxSpeed, lerpSpeed);
             CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * currentMaxSpeed;
         }
+        /*else if(touchingWall && !isGrounded)
+        {
+            currentMaxSpeed = wallSlideSpeed;
+            currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, maxSpeed, lerpSpeed);
+            CharacterRigidbody.velocity = CharacterRigidbody.velocity.normalized * currentMaxSpeed;
+        }*/
         else
         {
             currentMaxSpeed = maxSpeed;
@@ -84,12 +98,12 @@ public class RigidbodyVRController : MonoBehaviour
         // If button pressed, run
         if (MoveClick.state)
         {
-            Sensitivity = runSpeed;
+            Sensitivity = runSpeed * CharacterRigidbody.mass;
             maxSpeed = runMaxSpeed;
         }
         else
         {
-            Sensitivity = walkSpeed;
+            Sensitivity = walkSpeed * CharacterRigidbody.mass;
             maxSpeed = walkMaxSpeed;
         }
 
@@ -104,10 +118,30 @@ public class RigidbodyVRController : MonoBehaviour
         }
 
         //On button press, character jumps
-        if (JumpClick.state && isGrounded)
+        if (JumpClick.state)
         {
-            newMove += new Vector3(0, jumpForce, 0);
-            Debug.Log("Jumped");
+            /*if (touchingWall && !isGrounded)
+            {
+                newMove =  orientation * (new Vector3(0, wallJumpUpwardsVelocity, wallJumpFowardVelocity));
+                touchingWall = false;
+                StartCoroutine("loseTime");
+                Debug.Log("Wall Jumped");
+            }
+            else */
+            if (!isGrounded && canDoubleJump)
+            {
+                CharacterRigidbody.velocity = new Vector3(CharacterRigidbody.velocity.x, 0, CharacterRigidbody.velocity.z);
+                newMove.y += doubleJumpForce * CharacterRigidbody.mass;
+                canDoubleJump = false;
+                Debug.Log("Double Jumped");
+            }
+            else if (isGrounded)
+            {
+                newMove.y += jumpForce * CharacterRigidbody.mass;
+                isGrounded = false;
+                StartCoroutine("loseTime");
+                Debug.Log("Jumped");
+            }
         }
 
         //Apply
@@ -119,17 +153,44 @@ public class RigidbodyVRController : MonoBehaviour
         RaycastHit hit;
         float distance = 1.01f;
         Vector3 origin = new Vector3(head.position.x, 1 + transform.position.y, head.position.z);
-        Debug.DrawRay(origin, Vector3.down, Color.red, distance);
-        Debug.Log(Physics.Raycast(origin, Vector3.down, out hit, distance));
+        //Debug.DrawRay(origin, Vector3.down, Color.red, distance);
+        //Debug.Log(Physics.Raycast(origin, Vector3.down, out hit, distance));
         if (Physics.Raycast(origin, Vector3.down, out hit, distance))
         {
 
             isGrounded = true;
-
+            canDoubleJump = false;
         }
         else
         {
             isGrounded = false;
         }
+    }
+
+    private void CheckIfTouchingWall()
+    {
+        Vector3 origin = new Vector3(head.position.x, 1 + transform.position.y, head.position.z);
+        Collider[] hitColliders = Physics.OverlapSphere(origin, PlayerCollider.radius + 0.05f);
+        if (hitColliders.Length != 0)
+        {
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                if (hitColliders[i].gameObject.tag != "Player")
+                {
+                    Debug.DrawLine(origin, hitColliders[i].transform.position, Color.red);
+                    touchingWall = true;
+                }
+            }
+        }
+        else
+        {
+            touchingWall = false;
+        }
+    }
+
+    IEnumerator loseTime()
+    {
+        yield return new WaitForSeconds(waitTilDoubleJump);
+        canDoubleJump = true;
     }
 }

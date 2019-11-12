@@ -8,6 +8,9 @@ namespace Valve.VR.InteractionSystem
 {
     public class RenderModel : MonoBehaviour
     {
+        public float lerpSpeed = 5.0f;
+        public float MaxSpeed = 10.0f;
+
         public GameObject handPrefab;
         protected GameObject handInstance;
         protected Renderer[] handRenderers;
@@ -42,6 +45,14 @@ namespace Valve.VR.InteractionSystem
             InitializeController();
         }
 
+        /*private void Update()
+        {
+            Rigidbody handRigid = handPrefab.GetComponent<Rigidbody>();
+            Vector3 heading = transform.position - handRigid.gameObject.transform.position;
+            float distance = Vector3.Distance(transform.position, handRigid.transform.position);
+
+            handRigid.AddForce(heading * Mathf.Clamp(lerpSpeed * distance, 0, MaxSpeed));
+        }*/
         protected void InitializeHand()
         {
             if (handPrefab != null)

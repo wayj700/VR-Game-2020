@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830011048071525300}
   - component: {fileID: 830011048071525307}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ControllerHoverHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 830011048109106556}
   - component: {fileID: 830011048109106559}
   - component: {fileID: 830011048109106558}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830011048272545179}
   - component: {fileID: 830011048272545178}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ControllerHoverHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011048779933292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ObjectAttachmentPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011048831448197}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: FloorCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830011048868409225}
   - component: {fileID: 830011048868409224}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ControllerButtonHints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011048941150651}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ObjectAttachmentPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011048979298140}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ForceGrab Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011049047814881}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ForceGrab Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830011049059077784}
   - component: {fileID: 830011049059077791}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ControllerButtonHints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011049182100468}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HoverPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 830011049253353426}
   - component: {fileID: 830011049253353427}
   - component: {fileID: 830011049253353429}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830011049410697331}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HoverPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7153141989589957044}
   - component: {fileID: 7124174710008098440}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7153141989347418148}
   - component: {fileID: 7124174714516661262}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DebugUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7154853393458673276}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoSteamVRFallbackObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 7154853393458759492}
   - component: {fileID: 7154853393457207720}
   - component: {fileID: 7154853393468690418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FallbackObjects
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7154853393458764122}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SteamVRObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 7154853393461111986}
   - component: {fileID: 7154853393460080214}
   - component: {fileID: 7154853393468665724}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,8 +1131,8 @@ GameObject:
   - component: {fileID: 7154853393458902665}
   - component: {fileID: 7154853393458902661}
   - component: {fileID: 7154853393458902666}
-  m_Layer: 8
-  m_Name: Player 1
+  m_Layer: 2
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 7154853393458684560}
   - component: {fileID: 7154853393460065710}
   - component: {fileID: 7154853393461148406}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 7154853393468664754}
   - component: {fileID: 7154853393466428922}
   - component: {fileID: 7154853393467556144}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VRCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1451,7 +1451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7154853393458729902}
   - component: {fileID: 7154853393468718290}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FallbackHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1533,7 +1533,7 @@ GameObject:
   - component: {fileID: 7154853393468682362}
   - component: {fileID: 7154853393468685528}
   - component: {fileID: 7124174714628312636}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InputModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,7 +1612,7 @@ GameObject:
   - component: {fileID: 7124174715468005076}
   - component: {fileID: 7154853393468701050}
   - component: {fileID: 7124174709165415362}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: '[SteamVR]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1077,6 +1077,13 @@ namespace Valve.VR.InteractionSystem
         {
             UpdateNoSteamVRFallback();
 
+            //new hand position set code
+            /*Rigidbody handRigid = renderModelPrefab.GetComponent<Rigidbody>();
+            Vector3 heading = transform.position - handRigid.gameObject.transform.position;
+            float distance = Vector3.Distance(transform.position, handRigid.transform.position);
+            
+            handRigid.AddForce(heading * Mathf.Clamp(lerpSpeed * distance, 0, MaxSpeed));*/
+
             GameObject attachedObject = currentAttachedObject;
             if (attachedObject != null)
             {
@@ -1580,6 +1587,8 @@ namespace Valve.VR.InteractionSystem
 
 
         //-------------------------------------------------
+        public float lerpSpeed = 10.0f;
+        public float MaxSpeed = 5.0f;
         private void InitController()
         {
             if (spewDebugText)
@@ -1607,6 +1616,8 @@ namespace Valve.VR.InteractionSystem
             //Vector3 heading = Vector3.zero - renderModelInstance.transform.position;
 
             renderModelInstance.transform.localPosition = Vector3.zero;
+
+
             renderModelInstance.transform.localRotation = Quaternion.identity;
             renderModelInstance.transform.localScale = renderModelPrefab.transform.localScale;
 

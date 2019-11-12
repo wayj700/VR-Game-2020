@@ -73,7 +73,9 @@
     <Compile Include="Assets\Scripts\DisableRigidbody.cs" />
     <Compile Include="Assets\Scripts\ForceGrab.cs" />
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
+    <Compile Include="Assets\Scripts\PressurePlate.cs" />
     <Compile Include="Assets\Scripts\RigidbodyVRController.cs" />
+    <Compile Include="Assets\Scripts\ToggleDoor.cs" />
     <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
