@@ -68,6 +68,9 @@
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ParameterWindow.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Preferences.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ToggleContent.cs" />
+    <Compile Include="Assets\SAFullBodyIK\Editor\FullBodyIKEditorUtility.cs" />
+    <Compile Include="Assets\SAFullBodyIK\Editor\FullBodyIKInspector.cs" />
+    <Compile Include="Assets\SAFullBodyIK\Extensions\Editor\FullBodyIKUnityChanInspector.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/mjmar/Documents/GitHub/VR-Game-2020/Vr Testing/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
