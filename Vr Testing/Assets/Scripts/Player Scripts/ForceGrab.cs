@@ -24,6 +24,7 @@ public class ForceGrab : MonoBehaviour
 
     public Transform raySource;
     public Transform headPos;
+    public Transform shoulderPos;
     private Vector3 ForceHoldPos;
     public GameObject grabbedObject;
 
@@ -39,7 +40,7 @@ public class ForceGrab : MonoBehaviour
         RaycastHit hit;
         Ray ForceRay = new Ray(raySource.position, ((transform.up * -1.0f) + transform.forward));
         Debug.DrawRay(raySource.position, ((transform.up * -1.0f) + transform.forward) * maxDistance, Color.blue);
-        if (this.Grab.state && !isForceGrabbing && Physics.Raycast(raySource.position,((transform.up * -1.0f) + transform.forward), out hit, maxDistance))
+        if (this.Grab.state && !this.isForceGrabbing && Physics.Raycast(raySource.position,((transform.up * -1.0f) + transform.forward), out hit, maxDistance))
         {
             //collects object
             if (hit.collider.tag == "Interactible")
@@ -57,16 +58,28 @@ public class ForceGrab : MonoBehaviour
         }
         else if (this.isForceGrabbing && this.Grab.state)
         {
+            Rigidbody grabbedRigid = grabbedObject.GetComponent<Rigidbody>(); 
+
             //calculates pushing and pulling of object relative to the hand's disntance from head
-            currentHoldDist = Vector3.Distance(new Vector3(headPos.position.x, 0, headPos.position.z), new Vector3(this.transform.position.x, 0, this.transform.position.z)) * ModSpeed;
+            currentHoldDist = Vector3.Distance(new Vector3(shoulderPos.position.x, shoulderPos.position.y, shoulderPos.position.z), new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z)) * ModSpeed;
 
-            //move object towards target position
+            //calculates direction from object towards desired position
             Vector3 heading = ForceRay.GetPoint(currentHoldDist) - grabbedObject.GetComponent<Rigidbody>().position;
+
+            //sets distance of held object relative to hand's distance from guessed shoulder position
             float distance = Vector3.Distance(ForceRay.GetPoint(Mathf.Clamp(currentHoldDist, minDistance, maxDistance)), grabbedObject.GetComponent<Rigidbody>().position);
-            grabbedObject.GetComponent<Rigidbody>().AddForce(heading * Mathf.Clamp(lerpSpeed * distance * grabbedObject.GetComponent<Rigidbody>().mass, 0, forceMaxSpeed * grabbedObject.GetComponent<Rigidbody>().mass) * Time.deltaTime * 100);
+
+            //adds calculated force to object, moving it towards desired position
+            grabbedRigid.AddForce(heading * Mathf.Clamp(lerpSpeed * distance * grabbedObject.GetComponent<Rigidbody>().mass, 0, forceMaxSpeed * grabbedObject.GetComponent<Rigidbody>().mass) * Time.deltaTime * 100);
 
 
-            //grabbedObject.GetComponent<Rigidbody>().AddTorque();
+            Vector3 rotationHeading = new Vector3(0, this.transform.rotation.y, 0) - new Vector3(grabbedRigid.rotation.x, grabbedRigid.rotation.y, grabbedRigid.rotation.y);
+            grabbedRigid.angularDrag = dragAmount;
+            grabbedRigid.AddTorque(rotationHeading * lerpSpeed * Time.deltaTime * 10);
+
+
+            //Quaternion rotation = Quaternion.Euler(transform.rotation.x, 0 , transform.rotation.y) * Quaternion.Euler(0, 0, 0);
+            //grabbedRigid.MoveRotation(rotation);
 
 
         }
@@ -75,6 +88,7 @@ public class ForceGrab : MonoBehaviour
             //releases object
             grabbedObject.GetComponent<Rigidbody>().useGravity = true;
             grabbedObject.GetComponent<Rigidbody>().drag = 0.0f;
+            grabbedObject.GetComponent<Rigidbody>().angularDrag = 0.0f;
             grabbedObject = null;
             this.isForceGrabbing = false;
         }

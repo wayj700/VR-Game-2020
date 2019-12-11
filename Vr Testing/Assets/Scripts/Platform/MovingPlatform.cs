@@ -10,6 +10,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private bool isActive = false;
     [SerializeField] private bool isMoving = false;
     [SerializeField] private int positionInPoints = 0;
+    private Vector3 lastPos;
     private Vector3 target;
     private Vector3 heading;
     private float distance;
@@ -22,16 +23,26 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         target = points[0].position;
+        lastPos = target;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        movePlatformAround();
+    }
+
+    private void movePlatformAround()
+    {
         if (isMoving)
         {
             heading = target - platform.transform.position;
             distance = Vector3.Distance(target, platform.transform.position);
-            platform.GetComponent<Rigidbody>().MovePosition(platform.transform.position + (MaxSpeed * (heading / Mathf.Clamp(distance, 1, distance - 1) * Time.deltaTime)));
+            platform.GetComponent<Rigidbody>().MovePosition(platform.transform.position + (MaxSpeed * (heading / Mathf.Clamp(distance, 1, distance) * Time.deltaTime)));
+        }
+        else if (!isActive)
+        {
+            platform.GetComponent<Rigidbody>().MovePosition(lastPos);
         }
     }
 
@@ -39,8 +50,9 @@ public class MovingPlatform : MonoBehaviour
     {
         if (isMoving)
         {
+            lastPos = platform.transform.position;
+            isMoving = false;
             isActive = false;
-            target = platform.transform.position;
             StopCoroutine("movePlatform");
         }
         else
@@ -72,7 +84,6 @@ public class MovingPlatform : MonoBehaviour
                         start = points.Length;
                         stop = -1;
                         direction = -1;
-                        Debug.Log("Reached top of loop");
                     }
                 }
                 else
@@ -82,7 +93,6 @@ public class MovingPlatform : MonoBehaviour
                         start = 0;
                         stop = points.Length;
                         direction = 1;
-                        Debug.Log("Reached top of loop");
                     }
                 }
                 yield return new WaitForSeconds(waitTime);
@@ -96,7 +106,6 @@ public class MovingPlatform : MonoBehaviour
     {
         if (Vector3.Distance(platform.transform.position, target) <= 0.1f)
         {
-            Debug.Log("at target");
             return true;
         }
         else
