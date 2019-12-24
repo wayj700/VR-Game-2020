@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &524396823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524396824}
+  m_Layer: 2
+  m_Name: Right shoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524396824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524396823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.179, y: -0.346, z: -0.124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1793506050}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1206819819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206819820}
+  m_Layer: 2
+  m_Name: Left Shoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206819820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206819819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.179, y: -0.346, z: -0.124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1793506050}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1793506049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1793506050}
+  m_Layer: 2
+  m_Name: Shoulders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1793506050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793506049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1206819820}
+  - {fileID: 524396824}
+  m_Father: {fileID: 7154853393458710270}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &830011048071525301
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,11 +188,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oppositeHand: {fileID: 830011049253353517}
+  forceMaxSpeed: 12
   minDistance: 3
   maxDistance: 20
   dragAmount: 3
-  lerpSpeed: 50
-  ModSpeed: 0.1
+  lerpSpeed: 100
+  ModSpeed: 15
   Grab:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
@@ -111,6 +204,8 @@ MonoBehaviour:
     actionPath: /actions/default/in/LeftPush
     needsReinit: 0
   raySource: {fileID: 830011049047814881}
+  headPos: {fileID: 7154853393458700014}
+  shoulderPos: {fileID: 1206819820}
   grabbedObject: {fileID: 0}
 --- !u!114 &830011048109106559
 MonoBehaviour:
@@ -161,6 +256,8 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  lerpSpeed: 10
+  MaxSpeed: 5
 --- !u!114 &830011048109106558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,11 +678,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oppositeHand: {fileID: 830011048109106552}
+  forceMaxSpeed: 12
   minDistance: 3
   maxDistance: 20
   dragAmount: 3
-  lerpSpeed: 50
-  ModSpeed: 0.1
+  lerpSpeed: 100
+  ModSpeed: 15
   Grab:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
@@ -596,6 +694,8 @@ MonoBehaviour:
     actionPath: /actions/default/in/RightPush
     needsReinit: 0
   raySource: {fileID: 830011048979298140}
+  headPos: {fileID: 7154853393458700014}
+  shoulderPos: {fileID: 524396824}
   grabbedObject: {fileID: 0}
 --- !u!114 &830011049253353426
 MonoBehaviour:
@@ -646,6 +746,8 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  lerpSpeed: 10
+  MaxSpeed: 5
 --- !u!114 &830011049253353427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,6 +1257,7 @@ Transform:
   - {fileID: 7154853393458671346}
   - {fileID: 7153141989347418148}
   - {fileID: 830011048831448197}
+  - {fileID: 1793506050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1213,10 +1316,18 @@ MonoBehaviour:
   lerpSpeed: 2
   walkMaxSpeed: 2
   runMaxSpeed: 4.5
+  wallSlideSpeed: 0.2
   Sensitivity: 10
   walkSpeed: 12
   runSpeed: 16
-  jumpForce: 300
+  jumpForce: 400
+  doubleJumpForce: 300
+  waitTilDoubleJump: 0.25
+  wallJumpFowardVelocity: 50
+  wallJumpUpwardsVelocity: 400
+  isGrounded: 1
+  canDoubleJump: 1
+  touchingWall: 0
   MoveClick:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
@@ -1227,6 +1338,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/Jump
     needsReinit: 0
   GroundCheck: {fileID: 830011048831448198}
+  Shoulders: {fileID: 1793506049}
   head: {fileID: 7154853393458700014}
 --- !u!136 &7154853393458902661
 CapsuleCollider:
@@ -1250,7 +1362,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7154853393458902662}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 62
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1521,6 +1633,8 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  lerpSpeed: 10
+  MaxSpeed: 5
 --- !u!1 &7154853393458928196
 GameObject:
   m_ObjectHideFlags: 0

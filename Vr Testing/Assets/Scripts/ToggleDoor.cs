@@ -6,20 +6,42 @@ public class ToggleDoor : MonoBehaviour
 {
     public Animator anim;
 
+    [SerializeField] private bool canToggle = true;
+
     private void Start()
     {
         anim.enabled = false;
     }
 
+    public void checkIfDone()
+    {
+        canToggle = true;
+    }
+
+   private bool isAnimDone()
+    {
+        return canToggle;
+    }
+
     public void openDoor()
     {
-        anim.enabled = true;
-        anim.Play("Door Open");
+        if (canToggle)
+        {
+            Debug.Log("Opening Door");
+            anim.enabled = true;
+            anim.Play("Door Open");
+            canToggle = false;
+        }
     }
 
     public void closeDoor()
     {
-        anim.enabled = true;
-        anim.Play("Door Close");
-    }
+        if (canToggle)
+        {
+            Debug.Log("Closing Door");
+            anim.enabled = true;
+            anim.Play("Door Close");
+            canToggle = false;
+        }
+    }   
 }

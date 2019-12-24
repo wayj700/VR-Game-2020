@@ -48,7 +48,7 @@ public class NewDoor : MonoBehaviour
 
     public void toggleMove()
     {
-        if(isMoving == false)
+        if (isMoving == false)
         {
             isActive = true;
             StartCoroutine("moveDoor");
@@ -64,35 +64,31 @@ public class NewDoor : MonoBehaviour
             int stop = points.Length;
             int i = positionInPoints;
 
-            while (i != stop)
+            target = points[i].position;
+            isMoving = true;
+            yield return new WaitUntil(atTarget);
+            isMoving = false;
+            if (direction == 1)
             {
-                target = points[i].position;
-                isMoving = true;
-                yield return new WaitUntil(atTarget);
-                isMoving = false;
-                if (direction == 1)
+                if (i == stop - 1)
                 {
-                    if (i == stop - 1)
-                    {
-                        start = points.Length;
-                        stop = -1;
-                        direction = -1;
-                    }
+                    start = points.Length;
+                    stop = -1;
+                    direction = -1;
                 }
-                else
-                {
-                    if (i == 0)
-                    {
-                        start = 0;
-                        stop = points.Length;
-                        direction = 1;
-                    }
-                }
-                i += direction;
-                positionInPoints = i;
-                isActive = false;
-                break;
             }
+            else
+            {
+                if (i == 0)
+                {
+                    start = 0;
+                    stop = points.Length;
+                    direction = 1;
+                }
+            }
+            i += direction;
+            positionInPoints = i;
+            isActive = false;
         }
     }
 

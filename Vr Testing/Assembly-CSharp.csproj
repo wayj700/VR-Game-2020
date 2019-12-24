@@ -84,6 +84,7 @@
     <Compile Include="Assets\SAFullBodyIK\Scripts\FullBodyIKBehaviour.cs" />
     <Compile Include="Assets\SAFullBodyIK\Scripts\FullBodyIKBehaviourBase.cs" />
     <Compile Include="Assets\Scripts\BezierCurve.cs" />
+    <Compile Include="Assets\Scripts\CatapultActivator.cs" />
     <Compile Include="Assets\Scripts\DisableRigidbody.cs" />
     <Compile Include="Assets\Scripts\Platform\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Platform\NewDoor.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\Scripts\Player Scripts\ForceGrab.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\RigidbodyVRController.cs" />
     <Compile Include="Assets\Scripts\PressurePlate.cs" />
+    <Compile Include="Assets\Scripts\terminalCheck.cs" />
     <Compile Include="Assets\Scripts\ToggleDoor.cs" />
     <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
