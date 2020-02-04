@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Interactible
   - unwalkable
+  - Mirror
+  - LaserActivator
   layers:
   - Default
   - TransparentFX

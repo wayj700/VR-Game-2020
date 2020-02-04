@@ -33,11 +33,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean GrabPinch
+        public virtual SteamVR_Action_Boolean GrabPinchRight
         {
             get
             {
-                return SteamVR_Actions.default_GrabPinch;
+                return SteamVR_Actions.default_GrabPinchRight;
             }
         }
         
@@ -134,6 +134,22 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.default_RightPull;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean GrabPinchLeft
+        {
+            get
+            {
+                return SteamVR_Actions.default_GrabPinchLeft;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean potato
+        {
+            get
+            {
+                return SteamVR_Actions.default_potato;
             }
         }
         

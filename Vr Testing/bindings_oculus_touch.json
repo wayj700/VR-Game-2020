@@ -4,6 +4,10 @@
    "app_key" : "application.generated.unity.vrtesting.exe",
    "bindings" : {
       "/actions/buggy" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {
@@ -164,20 +168,6 @@
             },
             {
                "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/grabpinch"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.8",
-                  "click_deactivate_threshold" : "0.7",
-                  "force_input" : "value"
-               },
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
                   "pull" : {
                      "output" : "/actions/default/in/squeeze"
                   }
@@ -233,15 +223,6 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabpinch"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
                      "output" : "/actions/default/in/leftpull"
                   }
                },
@@ -274,10 +255,32 @@
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/b"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/grabpinchleft"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/grabpinchright"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
             }
          ]
       },
       "/actions/platformer" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {

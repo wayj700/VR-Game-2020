@@ -194,8 +194,9 @@ MonoBehaviour:
   dragAmount: 3
   lerpSpeed: 100
   ModSpeed: 15
+  rotateSpeed: 90
   Grab:
-    actionPath: /actions/default/in/GrabPinch
+    actionPath: /actions/default/in/GrabPinchLeft
     needsReinit: 0
   Pull:
     actionPath: /actions/default/in/LeftPull
@@ -207,6 +208,8 @@ MonoBehaviour:
   headPos: {fileID: 7154853393458700014}
   shoulderPos: {fileID: 1206819820}
   grabbedObject: {fileID: 0}
+  hitObject: {fileID: 0}
+  hitting: 0
 --- !u!114 &830011048109106559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +227,7 @@ MonoBehaviour:
   trackedObject: {fileID: 0}
   grabPinchAction:
     actionPath: /actions/default/in/GrabPinch
-    needsReinit: 0
+    needsReinit: 1
   grabGripAction:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
@@ -684,8 +687,9 @@ MonoBehaviour:
   dragAmount: 3
   lerpSpeed: 100
   ModSpeed: 15
+  rotateSpeed: 90
   Grab:
-    actionPath: /actions/default/in/GrabPinch
+    actionPath: /actions/default/in/GrabPinchRight
     needsReinit: 0
   Pull:
     actionPath: /actions/default/in/RightPull
@@ -697,6 +701,8 @@ MonoBehaviour:
   headPos: {fileID: 7154853393458700014}
   shoulderPos: {fileID: 524396824}
   grabbedObject: {fileID: 0}
+  hitObject: {fileID: 0}
+  hitting: 0
 --- !u!114 &830011049253353426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +720,7 @@ MonoBehaviour:
   trackedObject: {fileID: 0}
   grabPinchAction:
     actionPath: /actions/default/in/GrabPinch
-    needsReinit: 0
+    needsReinit: 1
   grabGripAction:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
