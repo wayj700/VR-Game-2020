@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class RigidbodyVRController : MonoBehaviour
 {
+    public float health = 100.0f;
     private float maxSpeed;
     private float currentMaxSpeed;
     public float lerpSpeed = 1.5f;
@@ -34,6 +35,8 @@ public class RigidbodyVRController : MonoBehaviour
 
     public Transform head;
 
+    public Transform spawn;
+
     private Rigidbody CharacterRigidbody;
     private CapsuleCollider PlayerCollider;
 
@@ -46,7 +49,10 @@ public class RigidbodyVRController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (health <= 0.0f)
+        {
+            killPlayer();
+        }
     }
 
     void FixedUpdate()
@@ -55,6 +61,12 @@ public class RigidbodyVRController : MonoBehaviour
         CheckIfGrounded();
         //CheckIfTouchingWall();
         CalculateMovement();
+    }
+
+    public void killPlayer()
+    {
+        health = 100.0f;
+        this.transform.position = spawn.position;
     }
 
     private void HandleHeight()
@@ -199,5 +211,15 @@ public class RigidbodyVRController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTilDoubleJump);
         canDoubleJump = true;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("collided");
+        if (collision.tag == "FallOffCheck")
+        {
+            Debug.Log("collided with falloff check");
+            killPlayer();
+        }
     }
 }

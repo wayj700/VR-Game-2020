@@ -51,7 +51,8 @@ public class ProjectileReflectionEmitterUnityNative : MonoBehaviour
             }
             else if (hit.collider.tag == "LaserActivator")
             {
-                hit.collider.gameObject.GetComponent<LaserActivator>().SendMessage("onHitEnter");
+                lastHitObject = hit.collider.gameObject;
+                lastHitObject.GetComponent<LaserActivator>().SendMessage("onHitEnter");
                 position = hit.point;
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(startingPosition, position);
@@ -76,6 +77,12 @@ public class ProjectileReflectionEmitterUnityNative : MonoBehaviour
                 laser.SetPosition(numBounces + 1, position);
                 return;
             }
+        }
+        else if(lastHitObject != null && lastHitObject.tag == "LaserActivator")
+        {
+            lastHitObject.GetComponent<LaserActivator>().SendMessage("onHitExit");
+            lastHitObject = null;
+            position += direction * maxStepDistance;
         }
         else
         {

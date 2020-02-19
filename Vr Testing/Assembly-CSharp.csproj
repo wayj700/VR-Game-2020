@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\CatapultActivator.cs" />
     <Compile Include="Assets\Scripts\DisableRigidbody.cs" />
     <Compile Include="Assets\Scripts\ExplosiveBarrel.cs" />
+    <Compile Include="Assets\Scripts\fallOffHandler.cs" />
     <Compile Include="Assets\Scripts\Interactible.cs" />
     <Compile Include="Assets\Scripts\LaserActivator.cs" />
     <Compile Include="Assets\Scripts\Platform\MovingPlatform.cs" />

@@ -70,10 +70,6 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/potato",
-      "type": "boolean"
-    },
-    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

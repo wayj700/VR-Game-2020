@@ -17,26 +17,23 @@ public class LaserActivator : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isHitByLaser)
-        {
-            onLaserHit.Invoke();
-        }
-        else if (!isHitByLaser && needsLaser)
-        {
-            onLaserLeave.Invoke();
-        }
-    }
-
     public void onHitEnter()
     {
-        isHitByLaser = true;
+        if (isHitByLaser == false)
+        {
+            onLaserHit.Invoke();
+            Debug.Log("hit by laser");
+            isHitByLaser = true;
+        }
     }
 
     public void onHitExit()
     {
         isHitByLaser = false;
+        if (needsLaser)
+        {
+            onLaserLeave.Invoke();
+            Debug.Log("unhit by laser");
+        }
     }
 }

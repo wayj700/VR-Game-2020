@@ -12,6 +12,8 @@ public class ExplosiveBarrel : MonoBehaviour
     public float blastForce = 700.0f;
 
     public GameObject explosionEffect;
+    public GameObject nonExplodedBarrel;
+    public GameObject explodedBarrel;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +27,10 @@ public class ExplosiveBarrel : MonoBehaviour
     private void explode()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        Destroy(nonExplodedBarrel);
+
+        Instantiate(explodedBarrel, transform.position, transform.rotation);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
 

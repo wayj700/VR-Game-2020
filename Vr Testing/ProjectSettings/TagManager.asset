@@ -11,6 +11,7 @@ TagManager:
   - unwalkable
   - Mirror
   - LaserActivator
+  - FallOffCheck
   layers:
   - Default
   - TransparentFX

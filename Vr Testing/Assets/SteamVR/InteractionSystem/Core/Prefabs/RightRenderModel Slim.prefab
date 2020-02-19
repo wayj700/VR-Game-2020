@@ -45,8 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 5
   MaxSpeed: 10
-  handPrefab: {fileID: 6425333508824494361, guid: 8bb1146c89c7ee247b81beb42837e7ab,
-    type: 3}
+  handPrefab: {fileID: 1000010304998954, guid: 6def53d002137b747aec0b29551e0e25, type: 3}
   displayHandByDefault: 1
   controllerPrefab: {fileID: 1000011460529826, guid: e789c2cc0c98a4c4198a4033fb8ccf96,
     type: 3}
