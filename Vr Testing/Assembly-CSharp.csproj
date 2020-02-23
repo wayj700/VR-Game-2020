@@ -87,7 +87,7 @@
     <Compile Include="Assets\Scripts\CatapultActivator.cs" />
     <Compile Include="Assets\Scripts\DisableRigidbody.cs" />
     <Compile Include="Assets\Scripts\Platform\MovingPlatform.cs" />
-    <Compile Include="Assets\Scripts\Platform\NewDoor.cs" />
+    <Compile Include="Assets\Scripts\Platform\PlatofrmPlayerCheck.cs" />
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\ForceGrab.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\RigidbodyVRController.cs" />
