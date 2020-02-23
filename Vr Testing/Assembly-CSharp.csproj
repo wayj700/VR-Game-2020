@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\LaserActivator.cs" />
     <Compile Include="Assets\Scripts\Platform\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Platform\NewDoor.cs" />
+    <Compile Include="Assets\Scripts\Platform\PlatofrmPlayerCheck.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\ForceGrab.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\RigidbodyVRController.cs" />
     <Compile Include="Assets\Scripts\PressurePlate.cs" />
