@@ -31,7 +31,6 @@ public class RigidbodyVRController : MonoBehaviour
     public SteamVR_Action_Boolean JumpClick = null;
 
     public GameObject GroundCheck;
-    public GameObject Shoulders;
 
     public Transform head;
 
@@ -92,10 +91,6 @@ public class RigidbodyVRController : MonoBehaviour
         Vector3 movement = Vector3.zero;
         Vector3 newMove = Vector3.zero;
 
-        //Set shoulder position
-        Shoulders.transform.position = head.position;
-        Shoulders.transform.rotation = orientation;
-
         //Set max speed of charcter
         if (CharacterRigidbody.velocity.magnitude > currentMaxSpeed && isGrounded)
         {
@@ -145,7 +140,7 @@ public class RigidbodyVRController : MonoBehaviour
                 newMove =  orientation * (new Vector3(0, wallJumpUpwardsVelocity, wallJumpFowardVelocity));
                 touchingWall = false;
                 StartCoroutine("loseTime");
-                //Debug.Log("Wall Jumped");
+                Debug.Log("Wall Jumped");
             }
             else */
             if (!isGrounded && canDoubleJump)
