@@ -192,7 +192,7 @@ MonoBehaviour:
   minDistance: 3
   maxDistance: 20
   dragAmount: 3
-  lerpSpeed: 100
+  lerpSpeed: 20
   ModSpeed: 15
   rotateSpeed: 90
   Grab:
@@ -224,10 +224,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 830011049253353426}
   handType: 1
-  trackedObject: {fileID: 0}
+  trackedObject: {fileID: 830011048109106558}
   grabPinchAction:
-    actionPath: /actions/default/in/GrabPinch
-    needsReinit: 1
+    actionPath: /actions/default/in/GrabPinchLeft
+    needsReinit: 0
   grabGripAction:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   minDistance: 3
   maxDistance: 20
   dragAmount: 3
-  lerpSpeed: 100
+  lerpSpeed: 20
   ModSpeed: 15
   rotateSpeed: 90
   Grab:
@@ -717,10 +717,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 830011048109106559}
   handType: 2
-  trackedObject: {fileID: 0}
+  trackedObject: {fileID: 830011049253353427}
   grabPinchAction:
-    actionPath: /actions/default/in/GrabPinch
-    needsReinit: 1
+    actionPath: /actions/default/in/GrabPinchRight
+    needsReinit: 0
   grabGripAction:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c12bf7cd1730d4b99e1c0c215a8551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   lerpSpeed: 2
   walkMaxSpeed: 2
   runMaxSpeed: 4.5
@@ -1344,8 +1345,8 @@ MonoBehaviour:
     actionPath: /actions/default/in/Jump
     needsReinit: 0
   GroundCheck: {fileID: 830011048831448198}
-  Shoulders: {fileID: 1793506049}
   head: {fileID: 7154853393458700014}
+  spawn: {fileID: 0}
 --- !u!136 &7154853393458902661
 CapsuleCollider:
   m_ObjectHideFlags: 0

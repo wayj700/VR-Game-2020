@@ -30,8 +30,9 @@ public class ForceGrab : MonoBehaviour
     public Transform headPos;
     public Transform shoulderPos;
     private Vector3 ForceHoldPos;
+    [HideInInspector]
     public GameObject grabbedObject;
-
+    [HideInInspector]
     public GameObject hitObject;
     public bool hitting = false;
 
@@ -101,12 +102,13 @@ public class ForceGrab : MonoBehaviour
 
             //calculates pushing and pulling of object relative to the hand's disntance from head
             currentHoldDist = Vector3.Distance(new Vector3(shoulderPos.position.x, shoulderPos.position.y, shoulderPos.position.z), new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z)) * ModSpeed;
+            Debug.Log(currentHoldDist);
 
             //calculates direction from object towards desired position
             Vector3 heading = ForceRay.GetPoint(currentHoldDist) - grabbedObject.GetComponent<Rigidbody>().position;
 
             //sets distance of held object relative to hand's distance from guessed shoulder position
-            float distance = Vector3.Distance(ForceRay.GetPoint(Mathf.Clamp(currentHoldDist, minDistance, maxDistance)), grabbedObject.GetComponent<Rigidbody>().position);
+            float distance = Vector3.Distance(ForceRay.GetPoint(Mathf.Clamp(currentHoldDist, minDistance, maxDistance)), grabbedObject.GetComponent<Rigidbody>().position) * ModSpeed;
 
             //adds calculated force to object, moving it towards desired position
             grabbedRigid.AddForce(heading * Mathf.Clamp(lerpSpeed * distance * grabbedObject.GetComponent<Rigidbody>().mass, 0, forceMaxSpeed * grabbedObject.GetComponent<Rigidbody>().mass) * Time.deltaTime * 100);
