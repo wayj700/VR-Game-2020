@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vrtesting.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\mjmar\\Documents\\GitHub\\VR-Game-2020\\Vr Testing\\actions.json",
+      "action_manifest_path": "C:\\Users\\mjmar\\Documents\\GitHub\\VR-Game-2020\\Vr Testing\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Vr Testing [Testing]"
